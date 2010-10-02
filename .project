@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>ARChess</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>net.sourceforge.texlipse.builder.TexlipseBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.axdt.as3.imp.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>net.sourceforge.texlipse.builder.TexlipseNature</nature>
+		<nature>org.axdt.as3.imp.nature</nature>
+	</natures>
+	<variableList>
+		<variable>
+			<name>FLARManager</name>
+			<value>file:/home/rafael/workspace/ARChess/FLARManager_v1_0_1/src</value>
+		</variable>
+		<variable>
+			<name>Papervision3D</name>
+			<value>file:/home/rafael/workspace/ARChess/FLARManager_v1_0_1/libs/Papervision3D_2.1.920.swc</value>
+		</variable>
+	</variableList>
+</projectDescription>
