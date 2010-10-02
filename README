@@ -1,0 +1,3 @@
+No make file substitua o caminho para o mxmlc do seu FlexSDK, que pode ser baixado em http://www.adobe.com/cfusion/entitlement/index.cfm?e=flex4sdk
+
+Para rodar o swf nao se esqueca de dar permissoes na pasta onde esta o swf em http://www.macromedia.com/support/documentation/br/flashplayer/help/settings_manager04.html#117502 
