@@ -42,7 +42,8 @@
 		private var scene:Scene3D;
 		private var render:BasicRenderEngine;
 		
-		private var monster:MD2;
+		/*private var monster:MD2;*/
+		private var cube:MD2
 		private var dp:DisplayObject3D;
 		
 		private var flarm:FLARManager;
@@ -65,14 +66,31 @@
 			vp = new Viewport3D(640, 480, true, true);
 			addChild(vp);
 			
-			create_monster();
+			create_cube();
 		}
 		
+		private function create_cube():void {
+			
+			cube = new MD2(false);
+			cube.load("./cube.md2", new BitmapFileMaterial("./marble.jpg"), 50, 60);
+			cube.addEventListener(FileLoadEvent.ANIMATIONS_COMPLETE, 
+				function (e:Event):void {
+					/*cube.animation.addClip(
+						new AnimationClip3D("stand", 0, 0));
+					cube.animation.addClip(
+						new AnimationClip3D("jump", 0, 2));
+					cube.play("stand");*/
+					dp = new DisplayObject3D();
+					dp.addChild(cube);
+					dp.visible = false;
+					scene.addChild(dp);
+				});
+		}
 		
-		private function create_monster():void {
+		/*private function create_monster():void {
 			
 			monster = new MD2(false);
-			monster.load("./monster_jump.md2", new BitmapFileMaterial("./monster.jpg"), 25, 30);
+			monster.load("./cube.md2", new BitmapFileMaterial("./marble.jpg"), 25,30);
 			monster.addEventListener(FileLoadEvent.ANIMATIONS_COMPLETE, 
 				function (e:Event):void {
 					monster.animation.addClip(
@@ -85,7 +103,7 @@
 					dp.visible = false;
 					scene.addChild(dp);
 				});
-		}
+		}*/
 		
 		private function init(e:Event = null):void 
 		{
@@ -124,19 +142,19 @@
 		
 		private function marker_del(e:FLARMarkerEvent):void {
 			trace("DEL" + e.marker.patternId.toString());
-			marker = null;
-			dp.visible = false;
+			/*marker = null;
+			dp.visible = false;*/
 		}
 		
 		private function key_down(evt:KeyboardEvent):void {
-			if (evt.keyCode == Keyboard.ENTER) {
+			/*if (evt.keyCode == Keyboard.ENTER) {
 				monster.play("jump", false);
 				t.text = (int(t.text) + 1).toString();
 			} else if (evt.keyCode == Keyboard.LEFT) {
 				monster.x -= 1;
 			} else if (evt.keyCode == Keyboard.RIGHT) {
 				monster.x += 1;
-			}
+			}*/
 		}
 		
 		private function update(e:Event):void {
