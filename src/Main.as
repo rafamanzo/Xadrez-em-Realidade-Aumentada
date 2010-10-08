@@ -42,17 +42,20 @@
 		private var scene:Scene3D;
 		private var render:BasicRenderEngine;
 		
-		/*private var monster:MD2;*/
+		private var monster:MD2;
 		private var cube:MD2
-		private var dp:DisplayObject3D;
+		private var dp1:DisplayObject3D;
+		private var dp2:DisplayObject3D;
 		
 		private var flarm:FLARManager;
-		private var marker:FLARMarker;
+		private var marker1:FLARMarker;
+		private var marker2:FLARMarker;
 		
 		private var t:TextField;
 		
 		public function Main():void 
 		{
+			trace("Macaco");
 			if (stage) init();
 			else addEventListener(Event.ADDED_TO_STAGE, init);
 		}
@@ -67,6 +70,7 @@
 			addChild(vp);
 			
 			create_cube();
+			create_monster();
 		}
 		
 		private function create_cube():void {
@@ -80,14 +84,14 @@
 					cube.animation.addClip(
 						new AnimationClip3D("jump", 0, 2));
 					cube.play("stand");*/
-					dp = new DisplayObject3D();
-					dp.addChild(cube);
-					dp.visible = false;
-					scene.addChild(dp);
+					dp1 = new DisplayObject3D();
+					dp1.addChild(cube);
+					dp1.visible = false;
+					scene.addChild(dp1);
 				});
 		}
 		
-		/*private function create_monster():void {
+		private function create_monster():void {
 			
 			monster = new MD2(false);
 			monster.load("./cube.md2", new BitmapFileMaterial("./marble.jpg"), 25,30);
@@ -98,12 +102,12 @@
 					monster.animation.addClip(
 						new AnimationClip3D("jump", 0, 2));
 					monster.play("stand");
-					dp = new DisplayObject3D();
-					dp.addChild(monster);
-					dp.visible = false;
-					scene.addChild(dp);
+					dp2 = new DisplayObject3D();
+					dp2.addChild(monster);
+					dp2.visible = false;
+					scene.addChild(dp2);
 				});
-		}*/
+		}
 		
 		private function init(e:Event = null):void 
 		{
@@ -112,7 +116,8 @@
 			flarm = new FLARManager("../resources/flar/flarConfig.xml", new FLARToolkitManager(), stage);
 			flarm.mirrorDisplay = true;
 			addChild(Sprite(flarm.flarSource));
-			marker = null;
+			marker1 = null;
+			marker2 = null;
 			flarm.addEventListener(Event.INIT, setup_AR);
 		}
 		
@@ -131,19 +136,35 @@
 		}
 		
 		private function marker_add(e:FLARMarkerEvent):void {
-			trace("ADD" + e.marker.patternId.toString());
-			marker = e.marker;
+			if(e.marker.patternId == 1){
+				t.text = "ADD" + e.marker.patternId.toString();
+				marker1 = e.marker;
+			}else if (e.marker.patternId == 2){
+				t.text = "ADD" + e.marker.patternId.toString();
+				marker2 = e.marker;	
+			}
 		}
 		
 		private function marker_up(e:FLARMarkerEvent):void {
-			trace("UP" + e.marker.patternId.toString());
-			marker = e.marker;
+			if(e.marker.patternId == 1){
+				t.text = "UP" + e.marker.patternId.toString();
+				marker1 = e.marker;
+			}else if (e.marker.patternId == 2){
+				t.text = "UP" + e.marker.patternId.toString();
+				marker2 = e.marker;	
+			}
 		}
 		
 		private function marker_del(e:FLARMarkerEvent):void {
-			trace("DEL" + e.marker.patternId.toString());
-			/*marker = null;
-			dp.visible = false;*/
+			if(e.marker.patternId == 1){
+				t.text = "DEL" + e.marker.patternId.toString();
+				marker1 = null;
+				dp1.visible = false;
+			}else if(e.marker.patternId == 2){
+				t.text = "DEL" + e.marker.patternId.toString();
+				marker2 = null;
+				dp2.visible = false;
+			}
 		}
 		
 		private function key_down(evt:KeyboardEvent):void {
@@ -158,10 +179,13 @@
 		}
 		
 		private function update(e:Event):void {
-			if (marker) {
-				dp.visible = true;
-				trace(marker.z);
-				dp.transform = PVGeomUtils.convertMatrixToPVMatrix(marker.transformMatrix);
+			if (marker1) {
+				dp1.visible = true;
+				dp1.transform = PVGeomUtils.convertMatrixToPVMatrix(marker1.transformMatrix);
+			}
+			if(marker2){
+				dp2.visible = true;
+				dp2.transform = PVGeomUtils.convertMatrixToPVMatrix(marker2.transformMatrix);
 			}
 			render.renderScene(scene, cam, vp);
 			
