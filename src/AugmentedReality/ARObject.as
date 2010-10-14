@@ -51,12 +51,22 @@ package  AugmentedReality{
 		}
 		
 		public function setVisible(value:Boolean):void{
-			dp.visible = value;
+			dp.visible = value;Vector.<Number>
 		}
 		
 		public function getVisible():Boolean{
 			return dp.visible;
 		}
 		
+		public function getPosition():Vector.<Number>{
+			var position:Vector.<Number>;
+			position = new Vector.<Number>();
+			
+			position[0] = marker.x;
+			position[1] = marker.y;
+			position[2] = marker.z;
+			
+			return position;
+		}
 	}
 }

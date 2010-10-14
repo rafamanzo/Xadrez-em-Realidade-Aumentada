@@ -116,6 +116,9 @@ package AugmentedReality {
 				case "1":
 					trace("UP" + e.marker.patternId.toString());
 					cube1.setMarker(e.marker);
+					var pos:Vector.<Number>;
+					pos = cube1.getPosition();
+					trace("POS: ("+pos[0]+","+pos[1]+","+pos[2]+")");
 					break;
 				case "2":
 					trace("UP" + e.marker.patternId.toString());
