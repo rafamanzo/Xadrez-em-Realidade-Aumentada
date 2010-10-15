@@ -51,7 +51,7 @@ package  AugmentedReality{
 		}
 		
 		public function setVisible(value:Boolean):void{
-			dp.visible = value;Vector.<Number>
+			dp.visible = value;
 		}
 		
 		public function getVisible():Boolean{
