@@ -1,4 +1,12 @@
 .project
 .settings
 .texlipse
-src/ain.swf
+src/Main.swf
+doc/manual.aux
+doc/manual.out
+doc/manual.log
+doc/manual.pdf
+doc/proposta.aux
+doc/proposta.log
+doc/proposta.out
+doc/proposta.pdf
