@@ -1,26 +1,25 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.8.25)  15 OCT 2010 19:21
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.8.25)  15 OCT 2010 17:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**manual.tex
-(./manual.tex
+**proposta.tex
+(./proposta.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
 yphenation, portuguese, loaded.
-(/usr/share/texmf-texlive/tex/latex/base/book.cls
-Document Class: book 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/share/texmf-texlive/tex/latex/base/bk12.clo
-File: bk12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+(/usr/share/texmf-texlive/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/size12.clo
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
-\c@chapter=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
@@ -37,7 +36,7 @@ Language: portuges 2008/03/18 v1.2q Portuguese support from the babel system
 
 (/usr/share/texmf-texlive/tex/generic/babel/babel.def
 File: babel.def 2008/07/06 v3.8l Babel common definitions
-\babel@savecnt=\count88
+\babel@savecnt=\count87
 \U@D=\dimen103
 )
 \l@brazil = a dialect from \language\l@portuges 
@@ -63,7 +62,7 @@ Package graphics Info: Driver file: pdftex.def on input line 91.
 
 (/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2009/08/25 v0.04m Graphics/color for pdfTeX
-\Gread@gobject=\count89
+\Gread@gobject=\count88
 ))
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
@@ -90,8 +89,8 @@ O)
 Package: xcolor-patch 2009/10/02 xcolor patch
 ))
 \@linkdim=\dimen106
-\Hy@linkcounter=\count90
-\Hy@pagecounter=\count91
+\Hy@linkcounter=\count89
+\Hy@pagecounter=\count90
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
@@ -151,7 +150,7 @@ Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 )))
-\Fld@menulength=\count92
+\Fld@menulength=\count91
 \Field@Width=\dimen107
 \Fld@charsize=\dimen108
 \Field@toks=\toks15
@@ -166,20 +165,17 @@ Package hyperref Info: PDF/A mode OFF on input line 4407.
 (/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
 Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
 )
-\Hy@abspage=\count93
-\c@Item=\count94
-\c@Hfootnote=\count95
+\Hy@abspage=\count92
+\c@Item=\count93
+\c@Hfootnote=\count94
 )
 *hyperref using driver hpdftex*
 (/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
-\Fld@listcount=\count96
-) (./manual.aux
-
-LaTeX Warning: Label `sec:pcpacoteaugmentedreality' multiply defined.
-
+\Fld@listcount=\count95
 )
-\openout1 = `manual.aux'.
+No file proposta.aux.
+\openout1 = `proposta.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
@@ -195,17 +191,17 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
- (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count97
+\scratchcounter=\count96
 \scratchdimen=\dimen109
 \scratchbox=\box26
-\nofMPsegments=\count98
-\nofMParguments=\count99
+\nofMPsegments=\count97
+\nofMParguments=\count98
 \everyMPshowfont=\toks16
-\MPscratchCnt=\count100
+\MPscratchCnt=\count99
 \MPscratchDim=\dimen110
-\MPnumerator=\count101
+\MPnumerator=\count100
 \everyMPtoPDFconversion=\toks17
 )
 Package hyperref Info: Link coloring OFF on input line 15.
@@ -215,87 +211,70 @@ Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
-\c@section@level=\count102
+\c@section@level=\count101
 )
 LaTeX Info: Redefining \ref on input line 15.
 LaTeX Info: Redefining \pageref on input line 15.
- (./manual.out)
-(./manual.out)
 \@outlinefile=\write3
-\openout3 = `manual.out'.
+\openout3 = `proposta.out'.
 
 \AtBeginShipoutBox=\box27
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <14.4> on input line 18.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 18.
- [1
-
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
-
-]
-[3] [4] [5
-
-] [6]
-Cap\'{\i }tulo 1.
-<diagramadeclasses.jpeg, id=95, 1299.85625pt x 353.32pt>
-File: diagramadeclasses.jpeg Graphic file (type jpg)
-
-<use diagramadeclasses.jpeg>
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 28--29
- [][] 
- []
-
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 30.
+(Font)              <12> on input line 35.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 30.
+(Font)              <8> on input line 35.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 30.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 32.
-[7
+(Font)              <6> on input line 35.
 
- <./diagramadeclasses.jpeg>] [8
 
-]
-Cap\'{\i }tulo 2.
-[9]
+LaTeX Warning: Reference `sec: telas' on page 1 undefined on input line 50.
 
-LaTeX Warning: Reference `subsec:ecclassaroperation' on page 10 undefined on in
-put line 91.
+[1
 
-[10]
-Cap\'{\i }tulo 3.
-[11
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+<menu.jpg, id=17, 1388.18625pt x 840.13875pt>
+File: menu.jpg Graphic file (type jpg)
+ <use menu.jpg>
+<tabuleirosemar.jpg, id=18, 1511.6475pt x 1047.915pt>
+File: tabuleirosemar.jpg Graphic file (type jpg)
+ <use tabuleirosemar.jpg>
+<tabuleirocomar.jpg, id=19, 1514.65875pt x 1081.03876pt>
+File: tabuleirocomar.jpg Graphic file (type jpg)
 
-] (./manual.aux)
+<use tabuleirocomar.jpg> [2 <./menu.jpg> <./tabuleirosemar.jpg>]
+<ajuda.jpg, id=28, 1388.18625pt x 918.43124pt>
+File: ajuda.jpg Graphic file (type jpg)
+ <use ajuda.jpg> [3 <./tabuleirocomar.jpg> <./ajuda.jpg>]
+
+LaTeX Warning: Reference `sec: telas' on page 4 undefined on input line 116.
+
+[4] (./proposta.aux)
 
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 4540 strings out of 495041
- 65215 string characters out of 1181897
- 135428 words of memory out of 3000000
- 7646 multiletter control sequences out of 15000+50000
- 9934 words of font info for 35 fonts, out of 3000000 for 9000
+ 4488 strings out of 495041
+ 64704 string characters out of 1181897
+ 134184 words of memory out of 3000000
+ 7614 multiletter control sequences out of 15000+50000
+ 8977 words of font info for 32 fonts, out of 3000000 for 9000
  30 hyphenation exceptions out of 8191
- 38i,8n,36p,251b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,6n,36p,253b,337s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-tex
-live/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/t
-ype1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/
-amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
-mr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsl12.pfb></u
-sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on manual.pdf (11 pages, 182905 bytes).
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-tex
+live/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/t
+ype1/public/amsfonts/cm/cmtt12.pfb>
+Output written on proposta.pdf (4 pages, 490723 bytes).
 PDF statistics:
- 176 PDF objects out of 1000 (max. 8388607)
- 33 named destinations out of 1000 (max. 500000)
- 134 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 64 PDF objects out of 1000 (max. 8388607)
+ 19 named destinations out of 1000 (max. 500000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,16 @@
 \BOOKMARK [-1][-]{part.1}{I Manual do usu\341rio}{}
 \BOOKMARK [-1][-]{part.2}{II Manual do Desenvolvedor}{}
-\BOOKMARK [0][-]{chapter.1}{Prova de conceito}{part.2}
-\BOOKMARK [1][-]{section.1.1}{Introdu\347\343o}{chapter.1}
+\BOOKMARK [0][-]{chapter.1}{Diagrama de classes}{part.2}
+\BOOKMARK [0][-]{chapter.2}{Estrutura do c\363digo}{part.2}
+\BOOKMARK [1][-]{section.2.1}{Compila\347\343o}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.1.1}{Requisitos}{section.2.1}
+\BOOKMARK [1][-]{section.2.2}{Pacote principal}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.2.1}{Classe Main}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.2}{Classe Scenario}{section.2.2}
+\BOOKMARK [1][-]{section.2.3}{Pacote AugmentedReality}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.3.1}{Classe AROperation}{section.2.3}
+\BOOKMARK [2][-]{subsection.2.3.2}{Classe ARObject}{section.2.3}
+\BOOKMARK [0][-]{chapter.3}{Prova de conceito}{part.2}
+\BOOKMARK [1][-]{section.3.1}{Introdu\347\343o}{chapter.3}
+\BOOKMARK [1][-]{section.3.2}{Marcadores}{chapter.3}
+\BOOKMARK [1][-]{section.3.3}{Posi\347\343o do marcador no espa\347o}{chapter.3}
