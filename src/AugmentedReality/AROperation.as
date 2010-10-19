@@ -31,42 +31,42 @@ package AugmentedReality {
 			flarm.addEventListener(FLARMarkerEvent.MARKER_REMOVED, marker_del);
 			
 			cube = new ARObject("cube.md2", "marble.jpg", scene);
-			monster = new ARObject("monster_jump.md2", "monster.jpg", scene);
+			//monster = new ARObject("monster_jump.md2", "monster.jpg", scene);
 		}
 		
 		private function marker_add(e:FLARMarkerEvent):void {
-			if(e.marker.patternId == 1){
-				trace("ADD" + e.marker.patternId.toString());
+			trace("ADD" + e.marker.patternId.toString());
+			if(e.marker.patternId == 0){
 				cube.setMarker(e.marker);
 			}else if (e.marker.patternId == 2){
-				trace("ADD" + e.marker.patternId.toString());
-				monster.setMarker(e.marker);	
+				//trace("ADD" + e.marker.patternId.toString());
+				//monster.setMarker(e.marker);	
 			}
 		}
 		
 		private function marker_up(e:FLARMarkerEvent):void {
-			if(e.marker.patternId == 1){
-				trace("UP" + e.marker.patternId.toString());
+			trace("UP" + e.marker.patternId.toString());
+			if(e.marker.patternId == 0){
 				cube.setMarker(e.marker);
 			}else if (e.marker.patternId == 2){
-				trace("UP" + e.marker.patternId.toString());
-				monster.setMarker(e.marker);	
+				//trace("UP" + e.marker.patternId.toString());
+				//monster.setMarker(e.marker);	
 			}
 		}
 		
 		private function marker_del(e:FLARMarkerEvent):void {
-			if(e.marker.patternId == 1){
-				trace("DEL" + e.marker.patternId.toString());
+			trace("DEL" + e.marker.patternId.toString());
+			if(e.marker.patternId == 0){
 				cube.remove();
 			}else if(e.marker.patternId == 2){
-				trace("DEL" + e.marker.patternId.toString());
-				monster.remove();
+				//trace("DEL" + e.marker.patternId.toString());
+				//monster.remove();
 			}
 		}
 		
 		public function update(e:Event):void{
 			cube.update();
-			monster.update();
+			//monster.update();
 			render.renderScene(scene, cam, vp);
 		}
 	}
