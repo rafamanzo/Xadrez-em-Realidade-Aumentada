@@ -37,7 +37,10 @@ package AugmentedReality {
 		private function marker_add(e:FLARMarkerEvent):void {
 			trace("ADD" + e.marker.patternId.toString());
 			if(e.marker.patternId == 0){
-				cube.setMarker(e.marker);
+				cube.sumAdd_count();
+				if(cube.validateAdd()){
+					cube.setMarker(e.marker);
+				}
 			}else if (e.marker.patternId == 2){
 				//trace("ADD" + e.marker.patternId.toString());
 				//monster.setMarker(e.marker);	
@@ -47,7 +50,10 @@ package AugmentedReality {
 		private function marker_up(e:FLARMarkerEvent):void {
 			trace("UP" + e.marker.patternId.toString());
 			if(e.marker.patternId == 0){
-				cube.setMarker(e.marker);
+				cube.sumUp_count();
+				if(cube.validateUp()){
+					cube.setMarker(e.marker);
+				}
 			}else if (e.marker.patternId == 2){
 				//trace("UP" + e.marker.patternId.toString());
 				//monster.setMarker(e.marker);	
@@ -57,7 +63,10 @@ package AugmentedReality {
 		private function marker_del(e:FLARMarkerEvent):void {
 			trace("DEL" + e.marker.patternId.toString());
 			if(e.marker.patternId == 0){
-				cube.remove();
+				cube.sumDel_count();
+				if(cube.validateDel()){
+					cube.remove();
+				}
 			}else if(e.marker.patternId == 2){
 				//trace("DEL" + e.marker.patternId.toString());
 				//monster.remove();

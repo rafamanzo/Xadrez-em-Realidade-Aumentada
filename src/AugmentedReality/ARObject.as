@@ -11,13 +11,15 @@ package  AugmentedReality{
 	import com.transmote.flar.utils.geom.PVGeomUtils;
 	import flash.events.Event;
 			
-	public class ARObject {
+	public class ARObject extends Cronometer{
 		
 		private var dp:DisplayObject3D;
 		private var marker:FLARMarker;
 		private var model:MD2;
 			
 		public function ARObject(md2_model:String, texture:String, scene:Scene3D) {
+			super();
+							
 			marker = null;
 			model = new MD2(false);
 			model.load("3d/"+md2_model, new BitmapFileMaterial("3d/"+texture), 50, 60);
@@ -68,6 +70,6 @@ package  AugmentedReality{
 			
 			return position;
 		}
-		
+			
 	}
 }
