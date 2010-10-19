@@ -33,7 +33,7 @@ package  AugmentedReality{
 		}
 		
 		public function update():void{
-			if(marker){
+			if(marker != null){
 				setVisible(true);
 				dp.transform = PVGeomUtils.convertMatrixToPVMatrix(marker.transformMatrix);
 			}

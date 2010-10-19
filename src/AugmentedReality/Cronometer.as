@@ -2,13 +2,16 @@
  * @author rafael
  */
 package AugmentedReality {
+	import flash.utils.Timer;
+	
 	public class Cronometer {
-		private static const DELAY:Number = 0.5;
-		private static const ADD_RATE:Number = 15; //need to X MARKER_UPDATED events to add or X MARKER_UPDATED in less then one second
+		private static const DELAY:Number = 1;
+		private static const ADD_RATE:Number = 5; //need to X MARKER_UPDATED events to add or X MARKER_UPDATED in less then one second
 		private static const UP_RATE:Number = 5; //need to X MARKER_UPDATED events to update the marker in less than one second
 		private static const DEL_DELAY:Number = 1; // time in seconds with 0 MARKER_UPDATED events to delete the marker
 		private var date:Date;
 		private var time:Vector.<Number>;//[minutes, seconds, milliseconds]
+		private var timer:Timer;
 		private var add_count:Number;
 		private var del_count:Number;
 		private var up_count:Number;
@@ -18,10 +21,12 @@ package AugmentedReality {
 			add_count = 0;
 			del_count = 0;
 			up_count = 0;
-			time = null;
+			setTime();
 		}
 		
 		private function setTime():void{
+			time = new Vector.<Number>();
+			
 			time[0] = date.getMinutes();
 			time[1] = date.getSeconds();
 			time[2] = date.getMilliseconds();
@@ -32,8 +37,8 @@ package AugmentedReality {
 			var actual:Number;
 			var before:Number;
 			
-			if(time = null){
-				return 0;
+			if(time == null){
+				return -1;
 			}
 			
 			actual = ((date.getMinutes()*60) + (date.getSeconds()) + (date.getMilliseconds()/1000));
@@ -43,7 +48,8 @@ package AugmentedReality {
 		}
 		
 		public function sumUp_count():void{
-			if(getInterval() <= DELAY && getInterval > 0){
+			trace("UP: interval("+getInterval()+")");
+			if(getInterval() <= DELAY && getInterval() >= 0){
 				up_count += 1;
 				if(del_count > 0){
 					del_count = 0;
@@ -58,7 +64,8 @@ package AugmentedReality {
 		}
 		
 		public function sumAdd_count():void{
-			if(getInterval() <= DELAY && getInterval > 0){
+			trace("ADD: interval("+getInterval()+")");
+			if(getInterval() <= DELAY && getInterval() >= 0){
 				add_count += 1;
 				if(del_count > 0){
 					del_count = 0;
@@ -74,7 +81,8 @@ package AugmentedReality {
 		}
 		
 		public function sumDel_count():void{
-			if(getInterval() <= DELAY && getInterval > 0){
+			trace("DEL: interval("+getInterval()+")");
+			if(getInterval() <= DELAY && getInterval() >= 0){
 				del_count += 1;
 				if(add_count > 0){
 					add_count = 0;
@@ -90,7 +98,11 @@ package AugmentedReality {
 		}
 		
 		public function validateAdd():Boolean{
+			trace("ADD: add_count("+add_count+") up_count("+up_count+") del_count("+del_count+")")
 			if(add_count > 0 && up_count >= UP_RATE){
+				add_count = 0;
+				up_count = 0;
+				time = null;
 				return true;
 			}else{
 				setTime();
@@ -100,7 +112,10 @@ package AugmentedReality {
 		}
 		
 		public function validateUp():Boolean{
+			trace("UP: add_count("+add_count+") up_count("+up_count+") del_count("+del_count+")")
 			if(up_count > UP_RATE){
+				up_count = 0;
+				time = null;
 				return true;
 			}else{
 				setTime();
@@ -109,12 +124,8 @@ package AugmentedReality {
 		}
 		
 		public function validateDel():Boolean{
-			if(del_count > 0 && getInterval >= DEL_DELAY){
-				return true;
-			}else{
-				setTime();
-				return false;
-			}
+			trace("DEL: add_count("+add_count+") up_count("+up_count+") del_count("+del_count+")");
+			return true;
 		}
 	
 	}
