@@ -39,7 +39,7 @@
 			
 			<!-- list of file paths of patterns for FLARToolkit to detect. -->
 			<!-- @resolution specifies the resolution at which the patterns were generated. -->
-			<patterns resolution="16" patternToBorderRatioX="45" patternToBorderRatioY="45" minConfidence="0.3" >
+			<patterns resolution="16" patternToBorderRatioX="45" patternToBorderRatioY="45" minConfidence="0.4" >
 				<pattern path="../markers/pat/marker0.pat" />
         <pattern path="../markers/pat/marker1.pat" />
         <pattern path="../markers/pat/marker2.pat" />

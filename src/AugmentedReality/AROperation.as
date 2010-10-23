@@ -71,9 +71,7 @@ package AugmentedReality {
 				function (obj:ARObject, index:int, vector:Vector.<ARObject>):void{
 					if(e.marker.patternId == index){
 						 obj.sumDel_count();
-						 if(obj.validateDel()){
-						 	obj.remove();
-						 }
+						 obj.waitToDel(obj.remove);
 					}
 				}
 			);

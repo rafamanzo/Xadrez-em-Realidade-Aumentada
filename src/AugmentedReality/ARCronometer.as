@@ -3,6 +3,7 @@
  */
 package AugmentedReality {
 	import flash.utils.Timer;
+	import flash.events.TimerEvent;
 	
 	public class ARCronometer {
 		private static const DELAY:Number = 1;
@@ -15,6 +16,7 @@ package AugmentedReality {
 		private var add_count:Number;
 		private var del_count:Number;
 		private var up_count:Number;
+		private var remove:Function;
 			
 		public function ARCronometer() {
 			date = new Date();
@@ -45,6 +47,12 @@ package AugmentedReality {
 			before = ((time[0]*60) + (time[1]) + (time[2]/1000));
 			
 			return (actual - before);
+		}
+		
+		private function resetCounters():void{
+			resetUp_count();
+			resetAdd_count();
+			resetDel_count();
 		}
 		
 		public function sumUp_count():void{
@@ -100,8 +108,7 @@ package AugmentedReality {
 		public function validateAdd():Boolean{
 			trace("ADD: add_count("+add_count+") up_count("+up_count+") del_count("+del_count+")")
 			if(add_count > 0 && up_count >= UP_RATE){
-				add_count = 0;
-				up_count = 0;
+				resetCounters();
 				time = null;
 				return true;
 			}else{
@@ -114,7 +121,7 @@ package AugmentedReality {
 		public function validateUp():Boolean{
 			trace("UP: add_count("+add_count+") up_count("+up_count+") del_count("+del_count+")")
 			if(up_count > UP_RATE){
-				up_count = 0;
+				resetCounters();
 				time = null;
 				return true;
 			}else{
@@ -123,9 +130,20 @@ package AugmentedReality {
 			}
 		}
 		
-		public function validateDel():Boolean{
+		public function waitToDel(rm:Function):void{
 			trace("DEL: add_count("+add_count+") up_count("+up_count+") del_count("+del_count+")");
-			return true;
+			remove = rm;
+			timer = new Timer(DEL_DELAY*1000, 1);
+			timer.addEventListener(TimerEvent.TIMER, validateDel);
+			timer.start();
+		}
+		
+		private function validateDel(e:TimerEvent):void{
+			trace("DEL: add_count("+add_count+") up_count("+up_count+") del_count("+del_count+")");
+			if(del_count == 1 && add_count == 0 && up_count == 0 && remove != null){
+				remove();
+			}
+			resetCounters();		
 		}
 	
 	}
