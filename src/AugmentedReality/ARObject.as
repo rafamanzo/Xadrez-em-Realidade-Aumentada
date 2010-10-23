@@ -11,7 +11,7 @@ package  AugmentedReality{
 	import com.transmote.flar.utils.geom.PVGeomUtils;
 	import flash.events.Event;
 			
-	public class ARObject extends Cronometer{
+	public class ARObject extends ARCronometer{
 		
 		private var dp:DisplayObject3D;
 		private var marker:FLARMarker;
@@ -33,7 +33,7 @@ package  AugmentedReality{
 		}
 		
 		public function update():void{
-			if(marker != null){
+			if(marker != null && marker.transformMatrix != null){
 				setVisible(true);
 				dp.transform = PVGeomUtils.convertMatrixToPVMatrix(marker.transformMatrix);
 			}

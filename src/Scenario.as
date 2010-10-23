@@ -59,6 +59,7 @@ package
 			m.addChild(t);
 			
 			arop = new AROperation(flarm, cam, vp, scene);
+			arop.createARObject("cube.md2", "marble.jpg");
 			
 			m.addEventListener(Event.ENTER_FRAME, arop.update);
 		}

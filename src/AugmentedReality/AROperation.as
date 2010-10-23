@@ -16,8 +16,7 @@ package AugmentedReality {
 		private var scene:Scene3D;
 		private var render:BasicRenderEngine;
 		
-		private var cube:ARObject;
-		private var monster:ARObject;
+		private var arobjects:Vector.<ARObject>;
 		
 			
 		public function AROperation(flarm:FLARManager, c:Camera3D, v:Viewport3D, s:Scene3D) {
@@ -30,52 +29,64 @@ package AugmentedReality {
 			flarm.addEventListener(FLARMarkerEvent.MARKER_UPDATED, marker_up);
 			flarm.addEventListener(FLARMarkerEvent.MARKER_REMOVED, marker_del);
 			
-			cube = new ARObject("cube.md2", "marble.jpg", scene);
-			//monster = new ARObject("monster_jump.md2", "monster.jpg", scene);
+			arobjects = new Vector.<ARObject>();
+		}
+		
+		public function createARObject(model:String, texture:String):void{
+			var arobject:ARObject = new ARObject(model, texture, scene);
+			arobjects.push(arobject);
 		}
 		
 		private function marker_add(e:FLARMarkerEvent):void {
 			trace("ADD" + e.marker.patternId.toString());
-			if(e.marker.patternId == 0){
-				cube.sumAdd_count();
-				if(cube.validateAdd()){
-					cube.setMarker(e.marker);
+			arobjects.forEach(
+				function (obj:ARObject, index:int, vector:Vector.<ARObject>):void{
+					if(e.marker.patternId == index){
+						 obj.sumAdd_count();
+						 if(obj.validateAdd()){
+						 	obj.setMarker(e.marker);
+						 }
+					}
 				}
-			}else if (e.marker.patternId == 2){
-				//trace("ADD" + e.marker.patternId.toString());
-				//monster.setMarker(e.marker);	
-			}
+			);
 		}
 		
 		private function marker_up(e:FLARMarkerEvent):void {
 			trace("UP" + e.marker.patternId.toString());
-			if(e.marker.patternId == 0){
-				cube.sumUp_count();
-				if(cube.validateUp()){
-					cube.setMarker(e.marker);
+			arobjects.forEach(
+				function (obj:ARObject, index:int, vector:Vector.<ARObject>):void{
+					if(e.marker.patternId == index){
+						 obj.sumUp_count();
+						 if(obj.validateUp()){
+						 	obj.setMarker(e.marker);
+						 }
+					}
 				}
-			}else if (e.marker.patternId == 2){
-				//trace("UP" + e.marker.patternId.toString());
-				//monster.setMarker(e.marker);	
-			}
+			);
 		}
 		
 		private function marker_del(e:FLARMarkerEvent):void {
 			trace("DEL" + e.marker.patternId.toString());
-			if(e.marker.patternId == 0){
-				cube.sumDel_count();
-				if(cube.validateDel()){
-					cube.remove();
+			arobjects.forEach(
+				function (obj:ARObject, index:int, vector:Vector.<ARObject>):void{
+					if(e.marker.patternId == index){
+						 obj.sumDel_count();
+						 if(obj.validateDel()){
+						 	obj.remove();
+						 }
+					}
 				}
-			}else if(e.marker.patternId == 2){
-				//trace("DEL" + e.marker.patternId.toString());
-				//monster.remove();
-			}
+			);
 		}
 		
 		public function update(e:Event):void{
-			cube.update();
-			//monster.update();
+			if(arobjects.length > 0){
+				arobjects.forEach(
+					function (obj:ARObject, index:int, vector:Vector.<ARObject>):void{
+						obj.update();
+					}
+				);
+			}
 			render.renderScene(scene, cam, vp);
 		}
 	}

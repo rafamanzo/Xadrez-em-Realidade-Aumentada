@@ -4,7 +4,7 @@
 package AugmentedReality {
 	import flash.utils.Timer;
 	
-	public class Cronometer {
+	public class ARCronometer {
 		private static const DELAY:Number = 1;
 		private static const ADD_RATE:Number = 5; //need to X MARKER_UPDATED events to add or X MARKER_UPDATED in less then one second
 		private static const UP_RATE:Number = 5; //need to X MARKER_UPDATED events to update the marker in less than one second
@@ -16,7 +16,7 @@ package AugmentedReality {
 		private var del_count:Number;
 		private var up_count:Number;
 			
-		public function Cronometer() {
+		public function ARCronometer() {
 			date = new Date();
 			add_count = 0;
 			del_count = 0;
