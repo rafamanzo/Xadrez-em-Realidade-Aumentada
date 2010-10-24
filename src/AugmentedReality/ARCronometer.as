@@ -9,7 +9,7 @@ package AugmentedReality {
 		private static const DELAY:Number = 1;
 		private static const ADD_RATE:Number = 5; //need to X MARKER_UPDATED events to add or X MARKER_UPDATED in less then one second
 		private static const UP_RATE:Number = 5; //need to X MARKER_UPDATED events to update the marker in less than one second
-		private static const DEL_DELAY:Number = 1; // time in seconds with 0 MARKER_UPDATED events to delete the marker
+		private static const DEL_DELAY:Number = 3; // time in seconds with 0 MARKER_UPDATED events to delete the marker
 		private var date:Date;
 		private var time:Vector.<Number>;//[minutes, seconds, milliseconds]
 		private var timer:Timer;
