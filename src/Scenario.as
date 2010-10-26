@@ -28,9 +28,10 @@ package
 		
 		public function Scenario(mn:Main):void
 		{
-		m = mn;
-		if (m.stage) init();
-		else m.addEventListener(Event.ADDED_TO_STAGE, init);
+			m = mn;
+			
+			if (m.stage) init();
+			else m.addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
 		private function setup3d():void {
@@ -47,11 +48,13 @@ package
 			
 			flarm = new FLARManager("../resources/flar/flarConfig.xml", new FLARToolkitManager(), m.stage);
 			flarm.mirrorDisplay = true;
-			m.addChild(Sprite(flarm.flarSource));
 			flarm.addEventListener(Event.INIT, setup_AR);
+			m.addChild(Sprite(flarm.flarSource));
 		}
 		
 		private function setup_AR(e:Event):void {
+			var i:Number;
+			
 			setup3d();
 			t = new TextField();
 			t.text = "0";
@@ -59,10 +62,27 @@ package
 			m.addChild(t);
 			
 			arop = new AROperation(flarm, cam, vp, scene);
-			for(var i:Number = 0; i < 20; i +=1){
+			for(i = 0; i < 4; i +=1){
 				arop.createARObject("cube.md2", "marble.jpg");
 			}
+			for(i = 0; i < 8; i +=1){
+				arop.createARObject("pawn.md2", "white.png");
+			}
+			arop.createARObject("tower.md2", "white.png");
+			arop.createARObject("tower.md2", "white.png");
+			arop.createARObject("knight.md2", "white.png");
+			arop.createARObject("knight.md2", "white.png");
+			arop.createARObject("bishop.md2", "white.png");
+			arop.createARObject("bishop.md2", "white.png");
+			arop.createARObject("queen.md2", "white.png");
+			arop.createARObject("king.md2", "white.png");
+			
 			m.addEventListener(Event.ENTER_FRAME, arop.update);
+			
+			/*while(arop.allLoaded() == false){
+				
+			}*/
+			//loading.finish();
 		}
 	}
 

@@ -37,6 +37,18 @@ package AugmentedReality {
 			arobjects.push(arobject);
 		}
 		
+		public function allLoaded():Boolean{
+			var status:Boolean = true;
+			if(arobjects.length > 0){
+				arobjects.forEach(
+					function (obj:ARObject, index:int, vector:Vector.<ARObject>):void{
+						status = obj.getLoaded();
+					}
+				);
+			}
+			return status;
+		}
+		
 		private function marker_add(e:FLARMarkerEvent):void {
 			trace("ADD" + e.marker.patternId.toString());
 			arobjects.forEach(
@@ -85,7 +97,9 @@ package AugmentedReality {
 					}
 				);
 			}
+			//trace("4");
 			render.renderScene(scene, cam, vp);
+			//trace("5");
 		}
 	}
 
