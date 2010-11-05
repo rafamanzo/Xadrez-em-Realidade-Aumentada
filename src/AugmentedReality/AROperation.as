@@ -36,6 +36,8 @@ package AugmentedReality {
 			var arobject:ARObject = new ARObject(model, texture, scene);
 			arobjects.push(arobject);
 		}
+
+    
 		
 		public function allLoaded():Boolean{
 			var status:Boolean = true;
@@ -101,6 +103,14 @@ package AugmentedReality {
 			render.renderScene(scene, cam, vp);
 			//trace("5");
 		}
+
+    public function getPositionById(id:Number = -1):Vector.<Number>{
+      if((arobjects.length - 1) < id || id < 0){
+        return null;
+      }
+
+      return arobjects[id].getPosition();
+    }
 	}
 
 }
