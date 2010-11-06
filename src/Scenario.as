@@ -8,7 +8,6 @@ package
 	import flash.events.Event;
 	import flash.geom.Matrix;
 	import flash.geom.Rectangle;
-	import flash.text.TextField;
 	import org.papervision3d.cameras.Camera3D;
 	import org.papervision3d.scenes.Scene3D;
 	import org.papervision3d.view.Viewport3D;
@@ -33,6 +32,15 @@ package
 			if (m.stage) init();
 			else m.addEventListener(Event.ADDED_TO_STAGE, init);
 		}
+
+    private function init(e:Event = null):void{
+			m.removeEventListener(Event.ADDED_TO_STAGE, init);
+			
+			flarm = new FLARManager("../resources/flar/flarConfig.xml", new FLARToolkitManager(), m.stage);
+			flarm.mirrorDisplay = true;
+			flarm.addEventListener(Event.INIT, setup_AR);
+			m.addChild(Sprite(flarm.flarSource));
+		}
 		
 		private function setup3d():void {
 			cam = new FLARCamera_PV3D(flarm, new Rectangle(0, 0, m.stage.width, m.stage.height));;
@@ -42,25 +50,12 @@ package
 			vp = new Viewport3D(640, 480, true, true);
 			m.addChild(vp);
 		}
-		
-		private function init(e:Event = null):void{
-			m.removeEventListener(Event.ADDED_TO_STAGE, init);
-			
-			flarm = new FLARManager("../resources/flar/flarConfig.xml", new FLARToolkitManager(), m.stage);
-			flarm.mirrorDisplay = true;
-			flarm.addEventListener(Event.INIT, setup_AR);
-			m.addChild(Sprite(flarm.flarSource));
-		}
-		
+				
 		private function setup_AR(e:Event):void {
 			var i:Number;
 			
 			setup3d();
-			t = new TextField();
-			t.text = "0";
-			t.transform.matrix = new Matrix(3, 0, 0, 3);
-			m.addChild(t);
-			
+
 			arop = new AROperation(flarm, cam, vp, scene);
 			for(i = 0; i < 4; i +=1){
 				arop.createARObject("cube.md2", "marble.jpg");
