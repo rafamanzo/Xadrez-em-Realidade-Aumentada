@@ -4,6 +4,7 @@
 \usepackage[brazil]{babel}
 \usepackage[pdftex]{graphicx}
 \usepackage[pdftex]{hyperref}
+\usepackage{float}
 
 \title{Xadrez em Realidade Aumentada - Manual}
 \author{
@@ -15,6 +16,31 @@
 \begin{document}
 
 \maketitle
+
+\part{Considera\c c\~oes gerais}
+\label{part:consideracoesgerais}
+  \chapter{B\'asico}
+  \label{chbasico}
+  \section{Compila\c c\~ao}
+	\label{sec:cgcompilacao}
+	Este software foi desenvolvido e testado em Linux Ubuntu 10.04 (32 bits). Mas,
+	teoricamente, deve funcionar em qualquer maquina que atenda aos requisitos
+	(\ref{subsec:cgrequisitos})
+	
+	\subsection{Requisitos}
+	\label{subsec:cgrequisitos}
+	\begin{itemize}
+		\item{Adobe Flex Compiler (mxmlc) Version 4.1.0 build 16076}
+	\end{itemize}
+	
+	\subsection{Makefile}
+	Encontrado dentro da pasta src. Dentro dele substitua o caminho para o mxmlc do
+	seu Flex SDK.
+	Existem duas op\c c\~oes de debug:
+	\begin{itemize}
+	  \item{Compilar a vers\~ao de produ\c c~ao: ``make''}
+	  \item{Compilar a vers\~ao de debug: ``make debug''}
+	\end{itemize}
 
 \part{Manual do usu\'ario}
 \label{part:manualdousuario}
@@ -29,87 +55,97 @@
 \label{part:manualdodesenvolvedor}
 	\chapter{Diagrama de classes}
 	\label{ch:diagramadeclasses}
-	\begin{figure}[h]
+	\begin{figure}[H]
 	\centering
-	\includegraphics[width=1.2\textwidth]{diagramadeclasses}
+	\includegraphics[width=0.7\textwidth, height=0.7\textheight]{diagramadeclasses}
 	\end{figure}
 	\footnote{Ver observacoes sobre a clase AROperation em
 			  \ref{subsec:ecclassearoperation}
 			 }
-			 
-	\chapter{Estrutura do c\'odigo}
-	\label{ch:estruturadocodigo}
-	
-	\section{Compila\c c\~ao}
-	\label{sec:eccompilacao}
-	Este software foi desenvolvido e testado em Linux Ubuntu 10.04 (32 bits). Mas,
-	teoricamente, deve funcionar em qualquer maquina que atenda aos requisitos
-	(\ref{subsec:ecrequisitos})
-	
-	\subsection{Requisitos}
-	\label{subsec:ecrequisitos}
-	\begin{itemize}
-		\item{Adobe Flex Compiler (mxmlc) Version 4.1.0 build 16076}
-	\end{itemize}
-	
-	\subsection{Makefile}
-	Encontrado dentro da pasta src. Dentro dele substitua o caminho para o mxmlc do
-	seu Flex SDK.
-	Existem duas op\c c\~oes de debug:
-	\begin{itemize}
-	  \item{Compilar a vers\~ao de produ\c c~ao: ``make''}
-	  \item{Compilar a vers\~ao de debug: ``make debug''}
-	\end{itemize}
-	
-	\section{Pacote principal}
-		\label{sec:pcpacoteaugmentedreality}
-		
-		No momento, este pacote possui as classes Main e Scenario. Mas, com o
-		desenvolvimento do projeto, devem ser criadas novas classes.
-		
-		\subsection{Classe Main}
-		\label{subsec:ecclassemain}
-		Esta classe simplesmente instancia um objeto da classe
-		Scenario (\ref{subsec:ecclassescenario}).
-		
-		\subsection{Classe Scenario}
-		\label{subsec:ecclassescenario}
-		Esta classe recebe a inst\^ancia da classe Main na qual vai adicionar v\'arios
-		``eventlistener'' e adicionar elementos como c\^amera, textos e boto\~oes. Seu
-		objetivo \'e retirar do Main o c\'odigo que manipula a parte visual da
-		aplica\c c\~ao.
-		Trabalhando com a parte visual, esta classe n\~ao poderia deixar de utilizar
-		classes do pacote de realidade aumentada (\ref{sec:pcpacoteaugmentedreality}).
-		Vale ressaltar que os nomes de m\'etodos desta classe est\~ao muito ruins, mas
-		a refatora\c c\~ao disto j\'a foi planejada para a pr\'oxima fase.
-		\footnote{Link para a story da refatora\c c\~ao no pivotal:	\url{http://www.pivotaltracker.com/story/show/5588098}}
-		
-	\section{Pacote AugmentedReality}
-		\label{sec:pcpacoteaugmentedreality}
-		
-		No momento, este pacote possui as classes ARObject e AROperation. Mas, com o
-		desenvolvimento do projeto, devem ser criadas novas classes.
-		
-		\subsection{Classe AROperation}
-		\label{subsec:ecclassearoperation}
-		Esta classe concentra as opera\c c\~oes do FLARManager, como criar novos
-		objetos de realidade aumentada atrav\'es da classe ARObject
-		(\ref{subsec:ecclassearobject}) e atualizar os markers.
-		No momento, esta classe deve ter um atributo para cada modelo 3D que deve ser
-		mostrado. Mas, ja esta planejada a refatora\c c\~ao desta classe para que um
-		array din\^amico substitua esta necessidade de v\'arios atributos
-		(\footnote{Link para a story da refatora\c c\~ao no	pivotal: \url{http://www.pivotaltracker.com/story/show/5588098}}).
-		
-		
-		\subsection{Classe ARObject}
-		\label{subsec:ecclassearobject}
-		Respons\'avel por carregar o modelo 3D do objeto, guardar seu marker e seu
-		display. Nesta classe sao encontrados m\'etodos de get e set, por enquanto
-		p\'ublicos\footnote{Dependendo do desenvolvimento do projeto estes m\'etodos
-		podem se tornar protected e ser criada uma classe de interface para o pacote},
-		para quase todos seus atributos. Ela \'e a classe mais b\'asica que temos hoje
-		no software, sendo muito utilizada pela classe AROperation (\ref{subsec:ecclassearoperation}).
-		
+
+  \chapter{CRC cards}
+  \label{ch:crccards}
+  \section{Pacote Principal}
+	\label{sec:crcpacoteprincipal}
+    \subsection{Main}
+    \label{subsec:crcmain}
+    \begin{figure}[H]
+	  \centering
+	  \includegraphics[width=1.0\textwidth]{crc/Main}
+	  \end{figure}
+  	\subsection{Scenario}
+    \label{subsec:crcscenario}
+    \begin{figure}[H]
+	  \centering
+	  \includegraphics[width=1.0\textwidth]{crc/Scenario}
+	  \end{figure}
+  \section{Pacote AugmentedReality}
+  \label{sec:crcpacoteaugmentedreality}
+    \subsection{ARCronometer}
+    \label{subsec:crcarcronometer}
+    \begin{figure}[H]
+	  \centering
+	  \includegraphics[width=1.0\textwidth]{crc/ARCronometer}
+	  \end{figure}
+    \subsection{ARObject}
+    \label{subsec:crcarobject}
+    \begin{figure}[H]
+	  \centering
+	  \includegraphics[width=1.0\textwidth]{crc/ARObject}
+	  \end{figure}
+    \subsection{ARIndependentObject}
+    \label{subsec:crcarindependentobject}
+    \begin{figure}[H]
+	  \centering
+	  \includegraphics[width=1.0\textwidth]{crc/ARIndependentObject}
+	  \end{figure}
+    \subsection{AROperation}
+    \label{subsec:crcaroperation}
+    \begin{figure}[H]
+	  \centering
+	  \includegraphics[width=1.0\textwidth]{crc/AROperation}
+	  \end{figure}
+  \section{Pacote Game}
+  \label{sec:crcpacotegame}
+    \subsection{PieceType}
+    \label{subsec:crcpiecetype}
+    \begin{figure}[H]
+	  \centering
+	  \includegraphics[width=1.0\textwidth]{crc/PieceType}
+	  \end{figure}
+    \subsection{Piece}
+    \label{subsec:crcpiece}
+    \begin{figure}[H]
+	  \centering
+	  \includegraphics[width=1.0\textwidth]{crc/Piece}
+	  \end{figure}
+    \subsection{Board}
+    \label{subsec:crcboard}
+    \begin{figure}[H]
+	  \centering
+	  \includegraphics[width=1.0\textwidth]{crc/Board}
+	  \end{figure}
+    \subsection{Pacote Chess}
+    \label{subsec:crcpacotechess}
+      \subsection{ChessBoard}
+      \label{subsubsec:crcchessboard}
+      \begin{figure}[H]
+	    \centering
+	    \includegraphics[width=1.0\textwidth]{crc/ChessBoard}
+	    \end{figure}
+      \subsection{ChessPiece}
+      \label{subsubsec:crcchesspiece}
+      \begin{figure}[H]
+	    \centering
+	    \includegraphics[width=1.0\textwidth]{crc/ChessPieces}
+	    \end{figure}
+      \subsection{Validator}
+      \label{subsec:crcvalidator}
+      \begin{figure}[H]
+	    \centering
+	    \includegraphics[width=1.0\textwidth]{crc/Validator}
+	    \end{figure}
+
 	\chapter{Prova de conceito}
 	\label{ch:provadeconceito}
 		\section{Introdu\c c\~ao}

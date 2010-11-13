@@ -3,9 +3,11 @@
  */
 package  {
 	import flash.display.Sprite;
+  //import Application
 	
 	public class Main extends Sprite{
 		private var scenario:Scenario;
+    //public var:teste = new teste();
 		
 		public function Main() {
 			var loading:LoadingScreen;

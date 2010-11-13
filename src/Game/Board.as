@@ -1,6 +1,3 @@
-/**
- * @author rafael
- */
 package Game {
 	public class Board {
 		private var map:Vector.<Vector.<Piece>>;

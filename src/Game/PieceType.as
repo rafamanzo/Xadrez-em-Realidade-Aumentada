@@ -16,11 +16,11 @@ package Game {
       return ret;
     }
 		
-		public function getName():void{
+		public function getName():String{
 			return name;
 		}
 		
-		public function getColor():void{
+		public function getColor():String{
 			return color;
 		}
 		
@@ -48,7 +48,7 @@ package Game {
       }
     }
 
-		public function isNull(){
+		public function isNull():Boolean{
 			if(name == ""){
 				return true;
 			}else{

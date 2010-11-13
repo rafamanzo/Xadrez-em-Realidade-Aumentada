@@ -79,6 +79,10 @@ package
 			}*/
 			//loading.finish();
 		}
+
+    public function getAROperation():AROperation{
+      return arop;
+    }
 	}
 
 }

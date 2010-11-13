@@ -1,6 +1,3 @@
-/**
- * @author rafael
- */
 package Game.Chess {
 	public class ChessPieces {
 		public static const WHITE_PAWN:PieceType = PieceType("pawn", "white");

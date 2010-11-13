@@ -111,6 +111,14 @@ package AugmentedReality {
 
       return arobjects[id].getPosition();
     }
+
+    public function getVisibleById(id:Number = -1):Boolean{
+      if((arobjects.length - 1) < id || id < 0){
+        return null;
+      }
+
+      return arobjects[id].getVisible();
+    }
 	}
 
 }

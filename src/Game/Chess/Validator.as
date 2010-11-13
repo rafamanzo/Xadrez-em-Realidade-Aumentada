@@ -52,7 +52,7 @@ package Game {
       }
 		}
 
-    private function movingToSameColor(destiny:Vector.<int>, before:ChessBoard, type:PieceType){
+    private function movingToSameColor(destiny:Vector.<int>, before:ChessBoard, type:PieceType):Boolean{
       if(before.getPiece(destiny[0], destiny[1]).sameColor(type)){
         return false;
       }else{
