@@ -7,6 +7,7 @@ package AugmentedReality {
 	import org.papervision3d.objects.parsers.MD2;
 	import org.papervision3d.events.FileLoadEvent;
 	import org.papervision3d.scenes.Scene3D;
+  import org.papervision3d.core.Matrix3D;
 	import com.transmote.flar.utils.geom.PVGeomUtils;
 	import flash.events.Event;
 	
@@ -50,6 +51,10 @@ package AugmentedReality {
 			dp.y = position[1];
 			dp.z = position[2];
 		}
+
+    public function setTransform(matrix:Matrix3D):void{
+      dp.transform = matrix;
+    }
 	}
 
 }
