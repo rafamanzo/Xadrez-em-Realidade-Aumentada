@@ -34,6 +34,8 @@ package  AugmentedReality{
 			if(marker){
 				setVisible(true);
 				dp.transform = PVGeomUtils.convertMatrixToPVMatrix(marker.transformMatrix);
+        var position:Vector.<Number> = getPosition();
+        trace("("+position[0]+","+position[1]+","+position[2]+")");
 			}
 		}
 		
