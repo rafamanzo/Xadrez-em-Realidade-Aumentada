@@ -112,20 +112,54 @@ package AugmentedReality {
 			render.renderScene(scene, cam, vp);
 		}
 
-    public function getPositionById(id:Number = -1):Vector.<Number>{
-      if((arobjects.length - 1) < id || id < 0){
-        return null;
+    public function getPositionById(id:Number = -1, independent:Boolean = false):Vector.<Number>{
+      if(!indepentent){
+        if((arobjects.length - 1) < id || id < 0){
+          return null;
+        }
+        return arobjects[id].getPosition();
+      }else{
+        if((arindependentobjects.length > 0 || id < 0)){
+          return null;
+        }
+        return arindependentobjects[id].getPosition();
       }
-
-      return arobjects[id].getPosition();
     }
 
-    public function getVisibleById(id:Number = -1):Boolean{
-      if((arobjects.length - 1) < id || id < 0){
+    //avaible only for ARIndependentObject
+    public function setPositionBy(id:Number = -1, position:Vector.<Number>):void{
+      if((arindependentobjects.length > 0 || id < 0)){
         return null;
       }
+      return arindependentobjects[id].setPosition(position);
+    } 
 
-      return arobjects[id].getVisible();
+    public function getVisibleById(id:Number = -1, independent = false):Boolean{
+      if(!independent){      
+        if((arobjects.length - 1) < id || id < 0){
+          return null;
+        }
+        return arobjects[id].getVisible();
+      }else{
+        if((arindependentobjects.length > 0 || id < 0)){
+          return null;
+        }
+        return arindependentobjects[id].getVisible();
+      }
+    }
+
+    public function setVisibleById(id:Number = -1, visible = false, independent = false):void{
+      if(!independent){      
+        if((arobjects.length - 1) < id || id < 0){
+          return null;
+        }
+        return arobjects[id].setVisible(visible);
+      }else{
+        if((arindependentobjects.length > 0 || id < 0)){
+          return null;
+        }
+        return arindependentobjects[id].getVisible(visible);
+      }
     }
 	}
 
