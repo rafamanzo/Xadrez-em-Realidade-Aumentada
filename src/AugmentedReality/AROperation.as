@@ -1,6 +1,3 @@
-/**
- * @author rafael
- */
 package AugmentedReality {
 	import flash.events.Event;
 	import com.transmote.flar.FLARManager;
@@ -17,7 +14,7 @@ package AugmentedReality {
 		private var render:BasicRenderEngine;
 		
 		private var arobjects:Vector.<ARObject>;
-		
+    private var arindependentobjects:Vector.<ARIndependentObject>;		
 			
 		public function AROperation(flarm:FLARManager, c:Camera3D, v:Viewport3D, s:Scene3D) {
 			cam = c;
@@ -30,6 +27,7 @@ package AugmentedReality {
 			flarm.addEventListener(FLARMarkerEvent.MARKER_REMOVED, marker_del);
 			
 			arobjects = new Vector.<ARObject>();
+      arindependentobjects = new Vector.<ARIndependentObject>
 		}
 		
 		public function createARObject(model:String, texture:String):void{
@@ -37,7 +35,10 @@ package AugmentedReality {
 			arobjects.push(arobject);
 		}
 
-    
+    public function createARIndependentObject(model:String, texture:String, ARObject board_marker):void{
+      var arindependentobject:ARIndependetObject = new ARIndependentObject(model, texture, scene, board_marker);
+      arindependentobjects.push(arindependentobject); 
+    }
 		
 		public function allLoaded():Boolean{
 			var status:Boolean = true;
@@ -99,9 +100,16 @@ package AugmentedReality {
 					}
 				);
 			}
-			//trace("4");
+
+      if(arindependentobjects.length > 0){
+        arindependentobjects.forEach(
+          function (obj:ARindependentObject, index:int, vector:Vector.<ARIndependentObject>):void{
+            obj.update();
+          }
+        );
+      }
+
 			render.renderScene(scene, cam, vp);
-			//trace("5");
 		}
 
     public function getPositionById(id:Number = -1):Vector.<Number>{

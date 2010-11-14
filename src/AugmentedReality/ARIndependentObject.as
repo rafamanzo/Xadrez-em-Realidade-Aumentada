@@ -1,6 +1,3 @@
-/**
- * @author rafael
- */
 package AugmentedReality {
 	import org.papervision3d.materials.BitmapFileMaterial;
 	import org.papervision3d.objects.DisplayObject3D;
@@ -14,8 +11,9 @@ package AugmentedReality {
 	public class ARIndependentObject {
 		private var dp:DisplayObject3D;
 		private var model:MD2;
+    private var board_marker:ARObject;
 		
-		public function ARIndependentObject() {
+		public function ARIndependentObject(md2_model:String, texture:String, scene:Scene3D, bm:ARObject) {
 			model = new MD2(false);
 			model.load("3d/"+md2_model, new BitmapFileMaterial("3d/"+texture), 50, 60);
 			model.addEventListener(FileLoadEvent.ANIMATIONS_COMPLETE, 
@@ -25,6 +23,14 @@ package AugmentedReality {
 					dp.visible = false;
 					scene.addChild(dp);
 				});
+
+      board_marker = bm;
+		}
+
+    public function update():void{
+			if(board_marker.getVisible()){
+				transform(board_marker.getTransform());
+			}
 		}
 		
 		public function setVisible(value:Boolean):void{
@@ -52,8 +58,10 @@ package AugmentedReality {
 			dp.z = position[2];
 		}
 
-    public function setTransform(matrix:Matrix3D):void{
+    public function transform(matrix:Matrix3D):void{
+      var position:Vector.<Number> = getPosition();
       dp.transform = matrix;
+      setPosition(position);
     }
 	}
 

@@ -1,12 +1,10 @@
-/**
- * @author rafael
- */
 package  AugmentedReality{
 	import org.papervision3d.materials.BitmapFileMaterial;
 	import org.papervision3d.objects.DisplayObject3D;
 	import org.papervision3d.objects.parsers.MD2;
 	import org.papervision3d.events.FileLoadEvent;
 	import org.papervision3d.scenes.Scene3D;
+  import org.papervision3d.core.Matrix3D;
 	import com.transmote.flar.marker.FLARMarker;
 	import com.transmote.flar.utils.geom.PVGeomUtils;
 	import flash.events.Event;
@@ -77,12 +75,15 @@ package  AugmentedReality{
 			var position:Vector.<Number>;
 			position = new Vector.<Number>();
 			
-			position[0] = marker.x;
-			position[1] = marker.y;
-			position[2] = marker.z;
+			position[0] = dp.x;
+			position[1] = dp.y;
+			position[2] = dp.z;
 			
 			return position;
 		}
-			
+		
+    public function getTransform():Matrix3D{
+      return dp.transform;
+    }	
 	}
 }
