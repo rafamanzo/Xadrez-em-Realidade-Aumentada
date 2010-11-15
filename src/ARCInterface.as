@@ -7,7 +7,7 @@ package{
 
   //AugementedRealityChessInterface
 	public class ARCInterface extends ChessPieces{
-    public function GARInterface(){
+    public function ARCInterface(){
     }
 
     private function getBoardIndex(x_axis:Vector.<Number>, origin:Vector.<Number>, y_axis:Vector.<Number>, piece:Vector.<Number>):Vector.<int>{

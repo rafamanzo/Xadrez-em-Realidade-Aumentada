@@ -7,6 +7,7 @@ package  {
 	
 	public class Main extends Sprite{
 		private var scenario:Scenario;
+    private var player:Player;
     //public var:teste = new teste();
 		
 		public function Main() {
@@ -17,6 +18,8 @@ package  {
 			scenario = new Scenario(this);
 			//loading.finish();
 			//scenario.displayAll();	
+
+      player = new Player(this, scenario.getAROperation());
 		}
 	}
 

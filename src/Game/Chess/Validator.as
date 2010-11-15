@@ -1,6 +1,3 @@
-/**
- * @author rafael
- */
 package Game {
 	public class Validator extends ChessPieces{
 		public function Validator() {
@@ -27,9 +24,11 @@ package Game {
 				}else if(actual.getPiece(changes[0][0], changes[0][1]).isNull()){
 					return switchPieces(actual.getPiece(changes[1][0], changes[1][1]).getType(), changes[0], changes[1]);	
 				}else{
+          trace("None cordinate was left empty on new board");
 					return false; //always one coordinate was left empty				
 				}
 			}else{
+        trace("The number of changes between the old board and the new one are different than 2");
 				return false; //always two coordinates changes his values. if more or less than two have changed, something went wrong
 			}
 		}
@@ -48,6 +47,7 @@ package Game {
       }else if(type.sameName(WHITE_KING)){
         return validateKingMove(origin, destiny, before, type);
       }else{
+        trace("Unexpected PieceType");
         return false;
       }
 		}
@@ -56,6 +56,7 @@ package Game {
       if(before.getPiece(destiny[0], destiny[1]).sameColor(type)){
         return false;
       }else{
+        trace("Trying to move to a place with a piece of the same color.");
         return true;
       }
     }
@@ -65,8 +66,10 @@ package Game {
       var y_desloc:Number = origin[1] - destiny[1];
 
       if(x_desloc > 1 || x_desloc < -1 || y_desloc > 1 || y_desloc < -1){
+        trace("Invalid pawn move. Piece moved more than one coordinate");
         return false;
       }else if(movingToSameColor(destiny, before, type)){
+        trace("Invalid pawn move.");
         return false;
       }else{  
         return true;
@@ -78,12 +81,14 @@ package Game {
       var y_desloc:Number = origin[1] - destiny[1];
 
       if(movingToSameColor(destiny, before, type)){
+        trace("Invalid knight move.");
         return false;
       }else if((x_desloc == 3 || x_desloc == -3) && (y_desloc == 1 || y_desloc == -1)){
         return true;
       }else if((y_desloc == 3 || y_desloc == -3) && (x_desloc == 1 || x_desloc == -1){
         return true;
       }else{
+        trace("Invalid knight move. Invalid deslocation pattern.");
         return false;
       }
 		}
@@ -93,32 +98,38 @@ package Game {
       var y_desloc:Number = origin[1] - destiny[1];
 
       if(x_desloc != 0 && y_desloc != 0){
+        trace("Not a straight move.");
         return false;
       }else if(x_desloc > 0){
         for(var i:int = origin[0] - 1; i > destiny[0]; i += -1){
           if(!before.getPiece(i, origin[1]).isNull()){
+            trace("There is a pice on the way.");
             return false;
           }
         }
       }else if(x_desloc < 0){
         for(var i:int = origin[0] + 1; i < destiny[0]; i += 1){
           if(!before.getPiece(i, origin[1]).isNull()){
+            trace("There is a pice on the way.");
             return false;
           }
         }
       }else if(y_desloc > 0){
         for(var j:int = origin[1] - 1; j > destiny[1]; j += -1){
           if(!before.getPiece(origin[0], j).isNull()){
+            trace("There is a pice on the way.");
             return false;
           }
         }
       }else if(y_desloc < 0){
         for(var j:int = origin[1] + 1; j < destiny[1]; j += 1){
           if(!before.getPiece(origin[0], j).isNull()){
+            trace("There is a pice on the way.");
             return false;
           }
         }
       }else if(movingToSameColor(destiny, before, type)){
+        trace("Invalid stright move.");
         return false;
       }
 
@@ -145,8 +156,10 @@ package Game {
       }
 
       if(x_desloc != y_desloc){
+        trace("Not a diagonal move");
         return false;
       }else if(movingToSameColor(destiny, before, type)){
+        trace("Not a diagonal move");
         return false;
       }
 
@@ -155,6 +168,7 @@ package Game {
         var col:Number = origin[1] - sgn_y_desloc*i;
 
         if(!before.getPiece(row, col).isNull()){
+          trace("There is a pice on the way.");
           return false;
         }
       }
@@ -170,6 +184,7 @@ package Game {
 			if(validateStraightMove(origin, destiny, before, type) || validateDiagonalMove(origin, destiny, before, type)){
         return true;
       }else{
+        trace("Invalid queen move");
         return false;
       }
 		}
@@ -179,6 +194,7 @@ package Game {
       var y_desloc:Number = origin[1] - destiny[1];
 			
       if(x_desloc > 1 || x_desloc < -1 || y_desloc > 1 || y_desloc < -1){
+        trace("Invalid king move. Piece moved more than one coordinate");
         return false;
       }
 
@@ -192,6 +208,7 @@ package Game {
               piece_origin[1] = j;
 
               if(switchPieces(piece.getType(), piece_origin, origin, before)){
+                trace("Invalid king move. You are giving your king.");
                 return false;
               } 
             }
