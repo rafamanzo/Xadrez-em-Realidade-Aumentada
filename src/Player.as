@@ -5,6 +5,7 @@ package{
   import Game.Chess.ChessPieces;
   import AugmentedReality.AROperation;
   import flash.events.KeyboardEvent;
+  import flash.events.Event;
 
   public class Player extends ChessPieces{
     private var actual:ChessBoard;
@@ -12,14 +13,27 @@ package{
     private var validator:Validator;
     private var arci:ARCInterface;
     private var arop:AROperation;
+    private var main:Main;
+    private var getAROp:Function;
 
-    public function Player(m:Main, a:AROperation){
-      var i:Number;
-
+    public function Player(m:Main, f:Function){
       validator = new Validator();
       arci = new ARCInterface();
 
+      main = m;
+
       actual = new ChessBoard();
+
+			if (main.stage) init();
+			else main.addEventListener(Event.ADDED_TO_STAGE, init);
+      
+      //init();
+      getAROp = f;
+      arop = getAROp();      
+    }
+
+    private function init(e:Event = null):void{
+      var i:Number;
       
       for(i = 0; i < 8; i += 1){
         actual.setPiece(1, i, new Piece(WHITE_PAWN));
@@ -43,13 +57,12 @@ package{
       //actual.setPiece(7, 3, new Piece(BLACK_KING));
       //actual.setPiece(7, 4, new Piece(BLACK_QUEEN));
       
-      arop = a;
-
-      m.addEventListener(KeyboardEvent.KEY_DOWN, commands);      
+      main.stage.addEventListener(KeyboardEvent.KEY_DOWN, commands);
     }
 
-    private function commands(e:KeyboardEvent):void{
+    public function commands(e:KeyboardEvent):void{
       //space is the code 32
+      trace("CharCode:"+e.charCode);
       if(e.charCode == 32){
          userMove();       
       }
@@ -57,13 +70,21 @@ package{
 
     private function userMove():void{
       var aux_board:ChessBoard = before;
-      before = actual;
-      actual = arci.getBoard(before, arop);
+ 
+      if(arop == null){
+        arop = getAROp();
+      }
+     
+      if(arop != null){      
+        before = actual;
+        actual = arci.getBoard(before, arop);
 
-      if(!validator.validateNewBoard(before, actual)){
-        trace("Invalid board.");
-        actual = before;
-        before = aux_board;
+        trace("Validating board...");
+        if(!validator.validateNewBoard(before, actual)){
+          trace("Invalid board.");
+          actual = before;
+          before = aux_board;
+        }
       }
     }
   }

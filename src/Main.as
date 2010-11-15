@@ -1,8 +1,7 @@
-/**
- * @author rafael
- */
 package  {
 	import flash.display.Sprite;
+  import flash.events.Event;
+  import flash.events.KeyboardEvent;
   //import Application
 	
 	public class Main extends Sprite{
@@ -11,7 +10,7 @@ package  {
     //public var:teste = new teste();
 		
 		public function Main() {
-			var loading:LoadingScreen;
+			//var loading:LoadingScreen;
 			
 			//loading = new LoadingScreen(this, 640, 480);
 			//loading.start();
@@ -19,8 +18,20 @@ package  {
 			//loading.finish();
 			//scenario.displayAll();	
 
-      player = new Player(this, scenario.getAROperation());
+      player = new Player(this, scenario.getAROperation);
+
+      //if (stage) init();
+			//else addEventListener(Event.ADDED_TO_STAGE, init);
 		}
+
+    /*private function init(e:Event = null):void{
+      trace("keyboard added");
+      addEventListener(KeyboardEvent.KEY_DOWN, test);     
+    }
+
+    public function test(e:KeyboardEvent):void{
+      trace("CharCode:"+e.charCode);
+    }*/
 	}
 
 }

@@ -1,6 +1,3 @@
-/**
- * @author rafael
- */
 package AugmentedReality {
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
