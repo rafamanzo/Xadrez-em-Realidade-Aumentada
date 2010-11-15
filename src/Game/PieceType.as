@@ -25,7 +25,7 @@ package Game {
 		}
 		
 		public function sameType(p:PieceType):Boolean{
-			if(p.getName() == name && p.getColor == color){
+			if(p.getName() == name && p.getColor() == color){
 				return true;
 			}else{
 				return false;
@@ -33,7 +33,7 @@ package Game {
 		}
 
     public function sameColor(p:PieceType):Boolean{
-      if(p.getColor == color){
+      if(p.getColor() == color){
         return true;
       }else{
         return false;
@@ -41,7 +41,7 @@ package Game {
     }
 		
     public function sameName(p:PieceType):Boolean{
-      if(p.getName == name){
+      if(p.getName() == name){
         return true;
       }else{
         return false;

@@ -35,8 +35,8 @@ package AugmentedReality {
 			arobjects.push(arobject);
 		}
 
-    public function createARIndependentObject(model:String, texture:String, ARObject board_marker):void{
-      var arindependentobject:ARIndependetObject = new ARIndependentObject(model, texture, scene, board_marker);
+    public function createARIndependentObject(model:String, texture:String, board_marker:ARObject):void{
+      var arindependentobject:ARIndependentObject = new ARIndependentObject(model, texture, scene, board_marker);
       arindependentobjects.push(arindependentobject); 
     }
 		
@@ -103,7 +103,7 @@ package AugmentedReality {
 
       if(arindependentobjects.length > 0){
         arindependentobjects.forEach(
-          function (obj:ARindependentObject, index:int, vector:Vector.<ARIndependentObject>):void{
+          function (obj:ARIndependentObject, index:int, vector:Vector.<ARIndependentObject>):void{
             obj.update();
           }
         );
@@ -113,7 +113,7 @@ package AugmentedReality {
 		}
 
     public function getPositionById(id:Number = -1, independent:Boolean = false):Vector.<Number>{
-      if(!indepentent){
+      if(!independent){
         if((arobjects.length - 1) < id || id < 0){
           return null;
         }
@@ -127,38 +127,38 @@ package AugmentedReality {
     }
 
     //avaible only for ARIndependentObject
-    public function setPositionBy(id:Number = -1, position:Vector.<Number>):void{
+    public function setPositionBy(id:Number = -1, position:Vector.<Number> = null):void{
       if((arindependentobjects.length > 0 || id < 0)){
-        return null;
+        return;
       }
-      return arindependentobjects[id].setPosition(position);
+      arindependentobjects[id].setPosition(position);
     } 
 
-    public function getVisibleById(id:Number = -1, independent = false):Boolean{
+    public function getVisibleById(id:Number = -1, independent:Boolean = false):Boolean{
       if(!independent){      
         if((arobjects.length - 1) < id || id < 0){
-          return null;
+          return false;
         }
         return arobjects[id].getVisible();
       }else{
         if((arindependentobjects.length > 0 || id < 0)){
-          return null;
+          return false;
         }
         return arindependentobjects[id].getVisible();
       }
     }
 
-    public function setVisibleById(id:Number = -1, visible = false, independent = false):void{
+    public function setVisibleById(id:Number = -1, visible:Boolean = false, independent:Boolean = false):void{
       if(!independent){      
         if((arobjects.length - 1) < id || id < 0){
-          return null;
+          return;
         }
-        return arobjects[id].setVisible(visible);
+        arobjects[id].setVisible(visible);
       }else{
         if((arindependentobjects.length > 0 || id < 0)){
-          return null;
+          return;
         }
-        return arindependentobjects[id].setVisible(visible);
+        arindependentobjects[id].setVisible(visible);
       }
     }
 

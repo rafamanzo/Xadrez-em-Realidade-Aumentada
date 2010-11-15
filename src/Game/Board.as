@@ -6,7 +6,7 @@ package Game {
 			map = new Vector.<Vector.<Piece>>();
 			for(var i:int = 0; i < row; i+=1){
 				for(var j:int = 0; j < col; j+=1){
-					map[i][j] = new Piece();
+					map[i][j] = new Piece(new PieceType("", ""));
 				}
 			}
 		}

@@ -1,10 +1,13 @@
-package Game {
+package Game.Chess {
+  import Game.PieceType;
+  import Game.Piece;
+
 	public class Validator extends ChessPieces{
 		public function Validator() {
 			
 		}
 		
-		public function valideteNewBoard(before:ChessBoard, actual:ChessBoard):Boolean{
+		public function validateNewBoard(before:ChessBoard, actual:ChessBoard):Boolean{
 			var changes:Vector.<Vector.<int>> = new Vector.<Vector.<int>>();
 			var change_index:int = 0;
 				
@@ -20,9 +23,9 @@ package Game {
 			
 			if(changes.length == 2){					
 				if(actual.getPiece(changes[1][0], changes[1][1]).isNull()){
-					return switchPieces(actual.getPiece(changes[0][0], changes[0][1]).getType(), changes[1], changes[0]);
+					return switchPieces(actual.getPiece(changes[0][0], changes[0][1]).getType(), changes[1], changes[0], before);
 				}else if(actual.getPiece(changes[0][0], changes[0][1]).isNull()){
-					return switchPieces(actual.getPiece(changes[1][0], changes[1][1]).getType(), changes[0], changes[1]);	
+					return switchPieces(actual.getPiece(changes[1][0], changes[1][1]).getType(), changes[0], changes[1], before);	
 				}else{
           trace("None cordinate was left empty on new board");
 					return false; //always one coordinate was left empty				
@@ -85,7 +88,7 @@ package Game {
         return false;
       }else if((x_desloc == 3 || x_desloc == -3) && (y_desloc == 1 || y_desloc == -1)){
         return true;
-      }else if((y_desloc == 3 || y_desloc == -3) && (x_desloc == 1 || x_desloc == -1){
+      }else if((y_desloc == 3 || y_desloc == -3) && (x_desloc == 1 || x_desloc == -1)){
         return true;
       }else{
         trace("Invalid knight move. Invalid deslocation pattern.");
@@ -96,33 +99,35 @@ package Game {
     private function validateStraightMove(origin:Vector.<int>, destiny:Vector.<int>, before:ChessBoard, type:PieceType):Boolean{
       var x_desloc:Number = origin[0] - destiny[0];
       var y_desloc:Number = origin[1] - destiny[1];
+      var i:int = 0;
+      var j:int = 0;
 
       if(x_desloc != 0 && y_desloc != 0){
         trace("Not a straight move.");
         return false;
       }else if(x_desloc > 0){
-        for(var i:int = origin[0] - 1; i > destiny[0]; i += -1){
+        for(i = origin[0] - 1; i > destiny[0]; i += -1){
           if(!before.getPiece(i, origin[1]).isNull()){
             trace("There is a pice on the way.");
             return false;
           }
         }
       }else if(x_desloc < 0){
-        for(var i:int = origin[0] + 1; i < destiny[0]; i += 1){
+        for(i = origin[0] + 1; i < destiny[0]; i += 1){
           if(!before.getPiece(i, origin[1]).isNull()){
             trace("There is a pice on the way.");
             return false;
           }
         }
       }else if(y_desloc > 0){
-        for(var j:int = origin[1] - 1; j > destiny[1]; j += -1){
+        for(j = origin[1] - 1; j > destiny[1]; j += -1){
           if(!before.getPiece(origin[0], j).isNull()){
             trace("There is a pice on the way.");
             return false;
           }
         }
       }else if(y_desloc < 0){
-        for(var j:int = origin[1] + 1; j < destiny[1]; j += 1){
+        for(j = origin[1] + 1; j < destiny[1]; j += 1){
           if(!before.getPiece(origin[0], j).isNull()){
             trace("There is a pice on the way.");
             return false;

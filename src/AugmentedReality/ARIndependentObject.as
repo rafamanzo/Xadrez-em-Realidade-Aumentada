@@ -4,7 +4,7 @@ package AugmentedReality {
 	import org.papervision3d.objects.parsers.MD2;
 	import org.papervision3d.events.FileLoadEvent;
 	import org.papervision3d.scenes.Scene3D;
-  import org.papervision3d.core.Matrix3D;
+  import org.papervision3d.core.math.Matrix3D;
 	import com.transmote.flar.utils.geom.PVGeomUtils;
 	import flash.events.Event;
 	
