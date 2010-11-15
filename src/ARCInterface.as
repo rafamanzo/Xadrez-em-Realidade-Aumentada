@@ -11,10 +11,10 @@ package{
     }
 
     private function getBoardIndex(x_axis:Vector.<Number>, origin:Vector.<Number>, y_axis:Vector.<Number>, piece:Vector.<Number>):Vector.<int>{
-      var x_length:Number = (origin[0] - x_axis[0]) / 8;
-      var y_length:Number = (y_axis[1] - origin[1]) / 8;
+      var x_length:int = (origin[0] - x_axis[0]) / 8;
+      var y_length:int = (y_axis[1] - origin[1]) / 8;
 
-      var index:Vector.<Number> = new Vector.<Number>();
+      var index:Vector.<int> = new Vector.<int>();
       index[0] = (origin[0] - piece[0]) % x_length;
       index[1] = (piece[1] - origin[1]) % y_length;
 
@@ -32,7 +32,7 @@ package{
         //detects where white pwans are
         for(var i:int = 4; i < 12; i += 1){
           if(arop.getVisibleById(i)){
-            var index:Vector.<Number> = getBoardIndex(x_axis, origin, y_axis, arop.getPositionById(i));
+            var index:Vector.<int> = getBoardIndex(x_axis, origin, y_axis, arop.getPositionById(i));
             board.setPiece(index[1], index[0], new Piece(WHITE_PAWN));
           }
         }
@@ -40,7 +40,7 @@ package{
         //detects where white towers are
         for(var i:int = 12; i < 14; i += 1){
           if(arop.getVisibleById(i)){
-            var index:Vector.<Number> = getBoardIndex(x_axis, origin, y_axis, arop.getPositionById(i));
+            var index:Vector.<int> = getBoardIndex(x_axis, origin, y_axis, arop.getPositionById(i));
             board.setPiece(index[1], index[0], new Piece(WHITE_TOWER));
           }
         }
@@ -48,7 +48,7 @@ package{
         //detects where white knights are
         for(var i:int = 14; i < 16; i += 1){
           if(arop.getVisibleById(i)){
-            var index:Vector.<Number> = getBoardIndex(x_axis, origin, y_axis, arop.getPositionById(i));
+            var index:Vector.<int> = getBoardIndex(x_axis, origin, y_axis, arop.getPositionById(i));
             board.setPiece(index[1], index[0], new Piece(WHITE_KNIGHT));
           }
         }
@@ -56,20 +56,20 @@ package{
         //detects where white bishops are
         for(var i:int = 16; i < 18; i += 1){
           if(arop.getVisibleById(i)){
-            var index:Vector.<Number> = getBoardIndex(x_axis, origin, y_axis, arop.getPositionById(i));
+            var index:Vector.<int> = getBoardIndex(x_axis, origin, y_axis, arop.getPositionById(i));
             board.setPiece(index[1], index[0], new Piece(WHITE_BISHOP));
           }
         }
 
         //detects where the white queen is
         if(arop.getVisibleById(18)){
-          var index:Vector.<Number> = getBoardIndex(x_axis, origin, y_axis, arop.getPositionById(18));
+          var index:Vector.<int> = getBoardIndex(x_axis, origin, y_axis, arop.getPositionById(18));
           board.setPiece(index[1], index[0], new Piece(WHITE_QUEEN));
         }
 
         //detects where the white knight is
         if(arop.getVisibleById(19)){
-          var index:Vector.<Number> = getBoardIndex(x_axis, origin, y_axis, arop.getPositionById(19));
+          var index:Vector.<int> = getBoardIndex(x_axis, origin, y_axis, arop.getPositionById(19));
           board.setPiece(index[1], index[0], new Piece(WHITE_KING));
         }
 
@@ -88,7 +88,7 @@ package{
 
       actual = completeUserPieces(arop, before);
 
-      return actual;
+      return actual; 
     }
   }
 
