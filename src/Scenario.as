@@ -20,7 +20,7 @@ package
 		
 		private var flarm:FLARManager;
 		
-		private var t:TextField;
+		//private var t:TextField;
 		private var m:Main;
 		
 		private var arop:AROperation;
@@ -57,9 +57,13 @@ package
 			setup3d();
 
 			arop = new AROperation(flarm, cam, vp, scene);
+
+      //loading table markers
 			for(i = 0; i < 4; i +=1){
 				arop.createARObject("cube.md2", "marble.jpg");
 			}
+
+      //loading users pieces markers
 			for(i = 0; i < 8; i +=1){
 				arop.createARObject("pawn.md2", "white.png");
 			}
@@ -71,7 +75,20 @@ package
 			arop.createARObject("bishop.md2", "white.png");
 			arop.createARObject("queen.md2", "white.png");
 			arop.createARObject("king.md2", "white.png");
-			
+
+      //loading computer pieces
+      for(i = 0; i < 8; i += 1){
+        arop.createARIndependentObject("pawn.md2", "black.png");
+      }
+      arop.createARIndependentObject("tower.md2", "black.png");
+		  arop.createARIndependentObject("tower.md2", "black.png");
+      arop.createARIndependentObject("knight.md2", "black.png");
+      arop.createARIndependentObject("knight.md2", "black.png");
+      arop.createARIndependentObject("bishop.md2", "black.png");
+      arop.createARIndependentObject("bishop.md2", "black.png");
+      arop.createARIndependentObject("queen.md2", "black.png");
+      arop.createARIndependentObject("king.md2", "black.png");
+
 			m.addEventListener(Event.ENTER_FRAME, arop.update);
 			
 			/*while(arop.allLoaded() == false){

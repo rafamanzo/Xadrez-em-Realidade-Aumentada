@@ -158,9 +158,22 @@ package AugmentedReality {
         if((arindependentobjects.length > 0 || id < 0)){
           return null;
         }
-        return arindependentobjects[id].getVisible(visible);
+        return arindependentobjects[id].setVisible(visible);
       }
     }
-	}
 
+    public function getObjectById(id:Number = -1):ARObject{      
+      if((arobjects.length - 1) < id || id < 0){
+        return null;
+      }
+      return arobjects[id];
+    }
+
+    public function getIndependentObjectById(id:Number = -1):ARIndependentObject{
+      if((arindependentobjects.length > 0 || id < 0)){
+        return null;
+      }
+      return arindependentobjects[id];
+    }
+	}
 }
