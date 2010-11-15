@@ -21,8 +21,8 @@ package{
       return index;
     }
 
-    public function completeBoard(arop:AROperation):chessBoard{
-      var board:ChessBoard = new ChessBoard();
+    private function completeUserPieces(arop:AROperation, before:ChessBoard):ChessBoard{
+      var board:ChessBoard = before;
 
       if(arop.getVisibleById(0) && arop.getVisibleById(1) && arop.getVisibleById(2)){
         var x_axis:Vector.<Number> = arop.getPositionbyId(0); //marker 0
@@ -76,9 +76,19 @@ package{
       }else{
         trace("Can't detect all three board delimitator markers");
         return board;
-      }
-      
-      
+      }      
+    }
+
+    /*private function updateComputerPieces(arop:AROperation, board:ChessBoard){
+
+    }*/
+
+    public function getBoard(before:ChessBoard, arop:AROperation):ChessBoard{
+      var actual:ChessBoard;
+
+      actual = completeUserPieces(arop, before);
+
+      return actual;
     }
   }
 

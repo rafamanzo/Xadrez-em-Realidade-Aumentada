@@ -77,7 +77,7 @@ package
 			arop.createARObject("king.md2", "white.png");
 
       //loading computer pieces
-      for(i = 0; i < 8; i += 1){
+      /*for(i = 0; i < 8; i += 1){
         arop.createARIndependentObject("pawn.md2", "black.png");
       }
       arop.createARIndependentObject("tower.md2", "black.png");
@@ -87,14 +87,10 @@ package
       arop.createARIndependentObject("bishop.md2", "black.png");
       arop.createARIndependentObject("bishop.md2", "black.png");
       arop.createARIndependentObject("queen.md2", "black.png");
-      arop.createARIndependentObject("king.md2", "black.png");
+      arop.createARIndependentObject("king.md2", "black.png");*/
 
 			m.addEventListener(Event.ENTER_FRAME, arop.update);
 			
-			/*while(arop.allLoaded() == false){
-				
-			}*/
-			//loading.finish();
 		}
 
     public function getAROperation():AROperation{
