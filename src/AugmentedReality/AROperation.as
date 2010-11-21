@@ -127,7 +127,7 @@ package AugmentedReality {
     }
 
     //avaible only for ARIndependentObject
-    public function setPositionBy(id:Number = -1, position:Vector.<Number> = null):void{
+    public function setPositionById(id:Number = -1, position:Vector.<Number> = null):void{
       if((arindependentobjects.length > 0 || id < 0)){
         return;
       }

@@ -1,15 +1,14 @@
-package{
-
+package Interface{
 	import AugmentedReality.AROperation;
 	import Game.Chess.ChessBoard;
   import Game.Piece;
 	import Game.Chess.ChessPieces;
 
-  //AugementedRealityChessInterface
-	public class ARCInterface extends ChessPieces{
-    public function ARCInterface(){
+  public class UserPiecesHandler extends ChessPieces{
+    public function UserPiecesHandler(){
     }
 
+    //used to determinate the board index of one of the user's pieces
     private function getBoardIndex(x_axis:Vector.<Number>, origin:Vector.<Number>, y_axis:Vector.<Number>, piece:Vector.<Number>):Vector.<int>{
       var x_length:int = (origin[0] - x_axis[0]) / 8;
       var y_length:int = (y_axis[1] - origin[1]) / 8;
@@ -21,7 +20,7 @@ package{
       return index;
     }
 
-    private function completeUserPieces(arop:AROperation, before:ChessBoard):ChessBoard{
+    public function completeUserPieces(arop:AROperation, before:ChessBoard):ChessBoard{
       var board:ChessBoard = before;
       var i:int = 0;
       var index:Vector.<int>;
@@ -82,18 +81,5 @@ package{
       return board;      
     }
 
-    /*private function updateComputerPieces(arop:AROperation, board:ChessBoard){
-
-    }*/
-
-    public function getBoard(before:ChessBoard, arop:AROperation):ChessBoard{
-      var actual:ChessBoard;
-
-      actual = completeUserPieces(arop, before);
-
-      return actual; 
-    }
   }
-
 }
-

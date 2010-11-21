@@ -12,6 +12,7 @@ package
 	import org.papervision3d.scenes.Scene3D;
 	import org.papervision3d.view.Viewport3D;
 	import AugmentedReality.AROperation;
+  import AugmentedReality.ARObject;
 
 	public class Scenario{
 		private var cam:Camera3D;
@@ -77,17 +78,19 @@ package
 			arop.createARObject("king.md2", "white.png");
 
       //loading computer pieces
-      /*for(i = 0; i < 8; i += 1){
-        arop.createARIndependentObject("pawn.md2", "black.png");
+      var board_marker:ARObject = arop.getObjectById(1);
+
+      for(i = 0; i < 8; i += 1){
+        arop.createARIndependentObject("pawn.md2", "black.png", board_marker);
       }
-      arop.createARIndependentObject("tower.md2", "black.png");
-		  arop.createARIndependentObject("tower.md2", "black.png");
-      arop.createARIndependentObject("knight.md2", "black.png");
-      arop.createARIndependentObject("knight.md2", "black.png");
-      arop.createARIndependentObject("bishop.md2", "black.png");
-      arop.createARIndependentObject("bishop.md2", "black.png");
-      arop.createARIndependentObject("queen.md2", "black.png");
-      arop.createARIndependentObject("king.md2", "black.png");*/
+      arop.createARIndependentObject("tower.md2", "black.png", board_marker);
+		  arop.createARIndependentObject("tower.md2", "black.png", board_marker);
+      arop.createARIndependentObject("knight.md2", "black.png", board_marker);
+      arop.createARIndependentObject("knight.md2", "black.png", board_marker);
+      arop.createARIndependentObject("bishop.md2", "black.png", board_marker);
+      arop.createARIndependentObject("bishop.md2", "black.png", board_marker);
+      arop.createARIndependentObject("queen.md2", "black.png", board_marker);
+      arop.createARIndependentObject("king.md2", "black.png", board_marker);
 
 			m.addEventListener(Event.ENTER_FRAME, arop.update);
 			
