@@ -64,11 +64,17 @@ package  AugmentedReality{
 		}
 		
 		public function setVisible(value:Boolean):void{
-			dp.visible = value;
+      if(dp != null){
+			  dp.visible = value;
+      }
 		}
 		
 		public function getVisible():Boolean{
-			return dp.visible;
+      if(dp != null){
+			  return dp.visible;
+      }else{
+        return false;
+      }
 		}
 		
 		public function getPosition():Vector.<Number>{
