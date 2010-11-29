@@ -1,5 +1,6 @@
 package  AugmentedReality{
 	import org.papervision3d.materials.BitmapFileMaterial;
+  import org.papervision3d.materials.shadematerials.FlatShadeMaterial;
 	import org.papervision3d.objects.DisplayObject3D;
 	import org.papervision3d.objects.parsers.MD2;
 	import org.papervision3d.events.FileLoadEvent;
@@ -44,7 +45,7 @@ package  AugmentedReality{
 		}
 		
 		public function update():void{
-			if(marker != null && marker.transformMatrix != null){
+			if(marker != null && marker.transformMatrix != null && dp != null){
 				setVisible(true);
 				dp.transform = PVGeomUtils.convertMatrixToPVMatrix(marker.transformMatrix);
 			}
