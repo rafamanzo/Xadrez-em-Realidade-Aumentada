@@ -65,7 +65,9 @@ package{
       //space is the code 32
       trace("CharCode:"+e.charCode);
       if(e.charCode == 32){
-         userMove();       
+        userMove();       
+      }else if(e.charCode == 122 && e.ctrlKey){
+        undo();
       }
     }
 
@@ -86,6 +88,14 @@ package{
           actual = before;
           before = aux_board;
         }
+      }
+    }
+
+    private function undo():void{
+      if(actual == before){
+        trace("You can only undo one time");
+      }else{
+        actual = before;
       }
     }
   }
