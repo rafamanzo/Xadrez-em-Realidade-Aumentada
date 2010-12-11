@@ -3,6 +3,7 @@ package{
   import Game.Chess.Validator;
   import Game.Chess.ChessBoard;
   import Game.Chess.ChessPieces;
+  import Game.Chess.DummyAI;
   import AugmentedReality.AROperation;
   import Interface.ARCInterface;
   import flash.events.KeyboardEvent;
@@ -17,9 +18,11 @@ package{
     private var main:Main;
     private var getAROp:Function;
     private var help:HelpScreen;
+    private var ai: DummyAI;
 
     public function Player(m:Main, f:Function){
       validator = new Validator();
+      ai = new DummyAI();
       arci = new ARCInterface();
 
       main = m;
@@ -95,7 +98,9 @@ package{
           trace("Invalid board.");
           actual = before;
           before = aux_board;
-        }
+        }else{
+          actual = ai.play(actual);
+        }         
       }
     }
 

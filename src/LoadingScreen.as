@@ -1,6 +1,3 @@
-/**
- * @author rafael
- */
 package  {
 	import flash.text.TextField;
 	import flash.utils.Timer;
