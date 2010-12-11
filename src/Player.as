@@ -16,6 +16,7 @@ package{
     private var arop:AROperation;
     private var main:Main;
     private var getAROp:Function;
+    private var help:HelpScreen;
 
     public function Player(m:Main, f:Function){
       validator = new Validator();
@@ -30,7 +31,8 @@ package{
       
       //init();
       getAROp = f;
-      arop = getAROp();      
+      arop = getAROp();
+      help = new HelpScreen(main, 640, 480);
     }
 
     private function init(e:Event = null):void{
@@ -68,6 +70,12 @@ package{
         userMove();       
       }else if(e.charCode == 122 && e.ctrlKey){
         undo();
+      }else if(e.charCode == 104){
+        if(help.visible()){
+          help.hide();
+        }else{
+          help.show();
+        }
       }
     }
 
