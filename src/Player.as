@@ -17,7 +17,9 @@ package{
     private var arop:AROperation;
     private var main:Main;
     private var getAROp:Function;
+    private var menu:MenuScreen;
     private var help:HelpScreen;
+    private var credit:CreditScreen;
     private var ai: DummyAI;
 
     public function Player(m:Main, f:Function){
@@ -35,7 +37,11 @@ package{
       //init();
       getAROp = f;
       arop = getAROp();
+      menu = new MenuScreen(main, 640, 480);
       help = new HelpScreen(main, 640, 480);
+      credit = new CreditScreen(main, 640, 480);
+
+      menu.show();
     }
 
     private function init(e:Event = null):void{
@@ -79,6 +85,14 @@ package{
         }else{
           help.show();
         }
+      }else if(e.charCode == 99 && menu.visible()){
+        if(credit.visible()){
+          credit.hide();
+        }else{
+          credit.show();
+        }
+      }else if(e.charCode == 112 && menu.visible()){
+        menu.hide();
       }
     }
 
